@@ -2,6 +2,7 @@ trigger:
 - master
 - release/*
 - beta/*
+- test
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -43,3 +44,9 @@ steps:
     verbose: false
     publishEndpoint: 'npm'
   condition: and(succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/heads/release'))
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'es'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
