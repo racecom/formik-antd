@@ -8,9 +8,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: CmdLine@2
+- task: Bash@3
   inputs:
-    script: 'SET'
+    targetType: 'inline'
+    script: 'env | sort'
 
 - task: Npm@1
   displayName: 'npm install'
